@@ -7,7 +7,7 @@ import java.util.Collection;
 
 @Component
 @Entity
-@Table(name = "region")
+@Table(name = "country")
 public class Country {
     @Id
     @Column(name = "id")
