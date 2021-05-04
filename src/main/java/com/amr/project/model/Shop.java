@@ -15,15 +15,15 @@ public class Shop {
     private Long id;
     @Column
     private String name;
-    @Column
-    private String location;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToOne
+    private Country location;
+    @ManyToMany
     private Collection<Item> items;
 
     public Shop() {
     }
 
-    public Shop(Long id, String name, String location, Collection<Item> items) {
+    public Shop(Long id, String name, Country location, Collection<Item> items) {
         this.id = id;
         this.name = name;
         this.location = location;
@@ -46,11 +46,11 @@ public class Shop {
         this.name = name;
     }
 
-    public String getLocation() {
+    public Country getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Country location) {
         this.location = location;
     }
 

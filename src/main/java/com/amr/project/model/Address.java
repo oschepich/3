@@ -13,7 +13,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String index;
+    private String cityIndex;
     @OneToOne
     private Country country;
     @OneToOne
@@ -26,29 +26,21 @@ public class Address {
     public Address() {
     }
 
-    public Address(Long id, String index, Country country, City city, String street, String house) {
+    public Address(Long id, String cityIndex, Country country, City city, String street, String house) {
         this.id = id;
-        this.index = index;
+        this.cityIndex = cityIndex;
         this.country = country;
         this.city = city;
         this.street = street;
         this.house = house;
     }
 
-    public Long getId() {
-        return id;
+    public String getCityIndex() {
+        return cityIndex;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getIndex() {
-        return index;
-    }
-
-    public void setIndex(String index) {
-        this.index = index;
+    public void setCityIndex(String cityIndex) {
+        this.cityIndex = cityIndex;
     }
 
     public Country getCountry() {
@@ -65,6 +57,14 @@ public class Address {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStreet() {

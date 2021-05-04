@@ -15,13 +15,13 @@ public class City {
     @Column
     private String name;
 
+    public City() {
+
+    }
+
     public City(Long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public City() {
-
     }
 
     public Long getId() {

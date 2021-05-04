@@ -1,5 +1,7 @@
 package com.amr.project.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.Transient;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -7,12 +9,12 @@ import javax.persistence.*;
 @Component
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role implements GrantedAuthority {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(name = "role", unique = true)
     private String roleName;
 
     public Role() {
@@ -37,5 +39,10 @@ public class Role {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    @Override
+    public String getAuthority() {
+        return roleName;
     }
 }

@@ -16,18 +16,18 @@ public class Item {
     @Column
     private String name;
     @Column
-    private String price;
-    @ManyToMany(fetch = FetchType.EAGER)
+    private double price;
+    @ManyToMany
     private Collection<Category> categories;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Image> images;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Review> reviews;
 
     public Item() {
     }
 
-    public Item(Long id, String name, String price, Collection<Category> categories, Collection<Image> images, Collection<Review> reviews) {
+    public Item(Long id, String name, double price, Collection<Category> categories, Collection<Image> images, Collection<Review> reviews) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -60,11 +60,11 @@ public class Item {
         this.name = name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

@@ -1,17 +1,18 @@
 package com.amr.project.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
-import java.text.DateFormat;
+
 import java.util.Calendar;
 import java.util.Collection;
 
 @Component
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +31,9 @@ public class User {
     private String lastName;
     @Column
     private int age;
-    @Column
-    private String address;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToOne
+    private Address address;
+    @ManyToMany
     private Collection<Role> roles;
     @Column
     private String gender;
@@ -40,23 +41,23 @@ public class User {
     private Calendar birthday;
     @OneToOne
     private Image images;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Discount> discount;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Coupon> coupons;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Item> cart;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Order> orders;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Review> reviews;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Shop> shops;
 
     public User() {
     }
 
-    public User(Long id, String email, String username, String password, String phone, String firstName, String lastName, int age, String address, Collection<Role> roles, String gender, Calendar birthday, Image images, Collection<Discount> discount, Collection<Coupon> coupons, Collection<Item> cart, Collection<Order> orders, Collection<Review> reviews, Collection<Shop> shops) {
+    public User(Long id, String email, String username, String password, String phone, String firstName, String lastName, int age, Address address, Collection<Role> roles, String gender, Calendar birthday, Image images, Collection<Discount> discount, Collection<Coupon> coupons, Collection<Item> cart, Collection<Order> orders, Collection<Review> reviews, Collection<Shop> shops) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -106,8 +107,33 @@ public class User {
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
     }
 
     public String getPassword() {
@@ -150,11 +176,11 @@ public class User {
         this.age = age;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

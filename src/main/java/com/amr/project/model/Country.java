@@ -7,15 +7,15 @@ import java.util.Collection;
 
 @Component
 @Entity
-@Table(name = "country")
+@Table(name = "region")
 public class Country {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
-    private String Country;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @Column(unique = true)
+    private String country;
+    @ManyToMany
     private Collection<City> cities;
 
     public Country() {
@@ -23,7 +23,23 @@ public class Country {
 
     public Country(Long id, String country, Collection<City> cities) {
         this.id = id;
-        Country = country;
+        this.country = country;
+        this.cities = cities;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Collection<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(Collection<City> cities) {
         this.cities = cities;
     }
 
@@ -35,19 +51,11 @@ public class Country {
         this.id = id;
     }
 
-    public String getCountry() {
-        return Country;
+    public String getRegion() {
+        return country;
     }
 
-    public void setCountry(String country) {
-        Country = country;
-    }
-
-    public Collection<City> getCities() {
-        return cities;
-    }
-
-    public void setCities(Collection<City> cities) {
-        this.cities = cities;
+    public void setRegion(String country) {
+        this.country = country;
     }
 }
