@@ -6,21 +6,21 @@ import javax.persistence.*;
 
 @Component
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "categories")
+public class Category {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String roleName;
+    private String name;
 
-    public Role() {
+    public Category() {
     }
 
-    public Role(Long id, String roleName) {
+    public Category(Long id, String name) {
         this.id = id;
-        this.roleName = roleName;
+        this.name = name;
     }
 
     public Long getId() {
@@ -31,11 +31,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getName() {
+        return name;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setName(String name) {
+        this.name = name;
     }
 }
