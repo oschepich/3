@@ -17,13 +17,13 @@ public class User implements UserDetails {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(unique = true)
     private String email;
-    @Column
+    @Column(unique = true)
     private String username;
     @Column
     private String password;
-    @Column
+    @Column(unique = true)
     private String phone;
     @Column
     private String firstName;
@@ -35,8 +35,8 @@ public class User implements UserDetails {
     private Address address;
     @ManyToMany
     private Collection<Role> roles;
-    @Column
-    private String gender;
+    @OneToOne
+    private Gender gender;
     @Column
     private Calendar birthday;
     @OneToOne
@@ -57,7 +57,7 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(Long id, String email, String username, String password, String phone, String firstName, String lastName, int age, Address address, Collection<Role> roles, String gender, Calendar birthday, Image images, Collection<Discount> discount, Collection<Coupon> coupons, Collection<Item> cart, Collection<Order> orders, Collection<Review> reviews, Collection<Shop> shops) {
+    public User(Long id, String email, String username, String password, String phone, String firstName, String lastName, int age, Address address, Collection<Role> roles, Gender gender, Calendar birthday, Image images, Collection<Discount> discount, Collection<Coupon> coupons, Collection<Item> cart, Collection<Order> orders, Collection<Review> reviews, Collection<Shop> shops) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -192,11 +192,11 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

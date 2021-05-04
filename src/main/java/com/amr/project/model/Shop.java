@@ -13,7 +13,7 @@ public class Shop {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(unique = true)
     private String name;
     @OneToOne
     private Country location;
