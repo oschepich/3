@@ -19,7 +19,7 @@ public class Review {
     private Long id;
     @Column
     private String text;
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     public Review() {

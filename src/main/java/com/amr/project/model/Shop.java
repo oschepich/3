@@ -25,9 +25,11 @@ public class Shop {
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "shop_item")
     private Collection<Item> items;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "shop_review")
     private Collection<Review> reviews;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
     public Shop() {
     }
