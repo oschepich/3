@@ -22,7 +22,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "orders_item")
+    @JoinTable(name = "orders_item",
+            joinColumns = { @JoinColumn(name = "orders_id") },
+            inverseJoinColumns = { @JoinColumn(name = "item_id") })
     private Collection<Item> items;
     @Column
     private Calendar date;

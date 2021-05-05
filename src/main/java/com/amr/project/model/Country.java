@@ -21,7 +21,9 @@ public class Country {
     @Column(unique = true)
     private String country;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "country_city")
+    @JoinTable(name = "country_city",
+            joinColumns = { @JoinColumn(name = "country_id") },
+            inverseJoinColumns = { @JoinColumn(name = "city_id") })
     private Collection<City> cities;
 
     public Country() {

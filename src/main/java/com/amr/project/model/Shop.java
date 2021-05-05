@@ -23,10 +23,14 @@ public class Shop {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Country location;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "shop_item")
+    @JoinTable(name = "shop_item",
+            joinColumns = { @JoinColumn(name = "shop_id") },
+            inverseJoinColumns = { @JoinColumn(name = "item_id") })
     private Collection<Item> items;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "shop_review")
+    @JoinTable(name = "shop_review",
+            joinColumns = { @JoinColumn(name = "shop_id") },
+            inverseJoinColumns = { @JoinColumn(name = "review_id") })
     private Collection<Review> reviews;
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;

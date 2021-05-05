@@ -39,16 +39,21 @@ public class User implements UserDetails {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Address address;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_role")
+    @JoinTable(name = "user_role",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") })
     private Collection<Role> roles;
     @Column
     private Gender gender;
     @Column
     private Calendar birthday;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id")
     private Image images;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_coupon")
+    @JoinTable(name = "user_coupon",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "coupon_id") })
     private Collection<Coupon> coupons;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Item> cart;
@@ -56,10 +61,14 @@ public class User implements UserDetails {
     @JoinTable(name = "user_orders")
     private Collection<Order> orders;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_review")
+    @JoinTable(name = "user_review",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "review_id") })
     private Collection<Review> reviews;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_shop")
+    @JoinTable(name = "user_shop",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "shop_id") })
     private Collection<Shop> shops;
 
     public User() {
