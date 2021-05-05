@@ -1,5 +1,4 @@
-package com.amr.project.dao;
-
+package com.amr.project.dao.abstracts;
 
 public interface ReadWriteDao {
 

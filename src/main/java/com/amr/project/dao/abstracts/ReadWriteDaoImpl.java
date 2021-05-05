@@ -1,5 +1,4 @@
-package com.amr.project.dao;
-
+package com.amr.project.dao.abstracts;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,6 +13,7 @@ public abstract class ReadWriteDaoImpl<T> implements ReadWriteDao {
     public ReadWriteDaoImpl() {
         tClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
+
     @Override
     @Transactional
     public void deleteByKeyCascadeIgnore(long id) {
