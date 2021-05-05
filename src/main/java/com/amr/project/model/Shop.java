@@ -1,13 +1,18 @@
 package com.amr.project.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Collection;
 
-@Component
 @Entity
 @Table(name = "shops")
+@AllArgsConstructor
+@Getter
+@Setter
 public class Shop {
     @Id
     @Column(name = "id")
@@ -19,46 +24,9 @@ public class Shop {
     private Country location;
     @ManyToMany
     private Collection<Item> items;
+    @ManyToMany
+    private Collection<Review> reviews;
 
     public Shop() {
-    }
-
-    public Shop(Long id, String name, Country location, Collection<Item> items) {
-        this.id = id;
-        this.name = name;
-        this.location = location;
-        this.items = items;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Country getLocation() {
-        return location;
-    }
-
-    public void setLocation(Country location) {
-        this.location = location;
-    }
-
-    public Collection<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(Collection<Item> items) {
-        this.items = items;
     }
 }

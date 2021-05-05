@@ -1,12 +1,17 @@
 package com.amr.project.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Component
 @Entity
 @Table(name = "reviews")
+@AllArgsConstructor
+@Getter
+@Setter
 public class Review {
     @Id
     @Column(name = "id")
@@ -16,27 +21,5 @@ public class Review {
     private String text;
 
     public Review() {
-    }
-
-    public Review(Long id, String text) {
-        this.id = id;
-        this.text = text;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    public Long getId() {
-        return id;
     }
 }
