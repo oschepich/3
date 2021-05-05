@@ -12,13 +12,8 @@ import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Collection;
 
-enum Gender {
-    MAN,
-    WOMAN,
-}
-
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @AllArgsConstructor
 @Getter
 @Setter

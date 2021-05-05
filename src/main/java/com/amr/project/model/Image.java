@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "images")
+@Table(name = "image")
 @AllArgsConstructor
 @Getter
 @Setter

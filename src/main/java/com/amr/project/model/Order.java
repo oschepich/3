@@ -9,13 +9,8 @@ import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Collection;
 
-enum Status {
-    START,
-    COMPLETE,
-}
-
 @Entity
-@Table(name = "orders")
+@Table(name = "order")
 @AllArgsConstructor
 @Getter
 @Setter

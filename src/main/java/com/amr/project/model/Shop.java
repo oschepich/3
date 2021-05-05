@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "shops")
+@Table(name = "shop")
 @AllArgsConstructor
 @Getter
 @Setter

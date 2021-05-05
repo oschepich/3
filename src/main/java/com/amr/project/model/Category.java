@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "сategory")
 @AllArgsConstructor
 @Getter
 @Setter

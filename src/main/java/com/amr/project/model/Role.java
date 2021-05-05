@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "role")
 @AllArgsConstructor
 @Getter
 @Setter
@@ -19,7 +19,7 @@ public class Role implements GrantedAuthority {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "role", unique = true)
+    @Column(name = "role_name", unique = true)
     private String roleName;
 
     public Role() {
