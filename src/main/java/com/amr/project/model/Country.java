@@ -21,6 +21,7 @@ public class Country {
     @Column(unique = true)
     private String country;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "country_city")
     private Collection<City> cities;
 
     public Country() {

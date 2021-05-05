@@ -23,8 +23,10 @@ public class Shop {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Country location;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "shop_item")
     private Collection<Item> items;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "shop_review")
     private Collection<Review> reviews;
 
     public Shop() {

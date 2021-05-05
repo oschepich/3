@@ -1,7 +1,9 @@
 package com.amr.project.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +12,7 @@ import java.util.Calendar;
 import java.util.Collection;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @AllArgsConstructor
 @Getter
 @Setter
@@ -20,15 +22,18 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "orders_item")
     private Collection<Item> items;
     @Column
     private Calendar date;
     @Column
     private Status status;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Address deliveryAddress;
+    private Address address;
     @Column
     private double total;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
     public Order() {
     }
