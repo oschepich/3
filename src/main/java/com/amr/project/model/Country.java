@@ -20,7 +20,7 @@ public class Country {
     private Long id;
     @Column(unique = true)
     private String country;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<City> cities;
 
     public Country() {

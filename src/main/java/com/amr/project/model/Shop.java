@@ -20,11 +20,11 @@ public class Shop {
     private Long id;
     @Column(unique = true)
     private String name;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Country location;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Item> items;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Review> reviews;
 
     public Shop() {

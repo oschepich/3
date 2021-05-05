@@ -22,11 +22,11 @@ public class Item {
     private String name;
     @Column
     private double price;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Category> categories;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Image> images;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Review> reviews;
 
     public Item() {

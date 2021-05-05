@@ -35,31 +35,31 @@ public class User implements UserDetails {
     private String password;
     @Column(unique = true)
     private String phone;
-    @Column
+    @Column(name="first_name")
     private String firstName;
-    @Column
+    @Column(name="last_name")
     private String lastName;
     @Column
     private int age;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Address address;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Role> roles;
     @Column
     private Gender gender;
     @Column
     private Calendar birthday;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Image images;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Coupon> coupons;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Item> cart;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Order> orders;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Review> reviews;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Collection<Shop> shops;
 
     public User() {
