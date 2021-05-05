@@ -19,6 +19,8 @@ public class Review {
     private Long id;
     @Column
     private String text;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    private User user;
 
     public Review() {
     }
