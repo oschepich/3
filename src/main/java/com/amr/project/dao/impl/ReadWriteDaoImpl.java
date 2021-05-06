@@ -1,4 +1,6 @@
-package com.amr.project.dao.abstracts;
+package com.amr.project.dao.impl;
+
+import com.amr.project.dao.abstracts.ReadWriteDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

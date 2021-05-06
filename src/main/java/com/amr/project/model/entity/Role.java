@@ -1,7 +1,9 @@
-package com.amr.project.model;
+package com.amr.project.model.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.Transient;
@@ -11,19 +13,17 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "role")
-@AllArgsConstructor
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 public class Role implements GrantedAuthority {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "role_name", unique = true)
     private String roleName;
-
-    public Role() {
-    }
 
     @Override
     public String getAuthority() {
