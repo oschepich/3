@@ -11,6 +11,6 @@ public interface UserService<T>{
 
     User findUserByEmail(String email);
 
-    UserDetails loadUserByUsername(String s) throws UsernameNotFoundException;
+//    UserDetails loadUserByUsername(String s) throws UsernameNotFoundException;
 
 }

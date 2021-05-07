@@ -4,6 +4,7 @@ import com.amr.project.dao.abstracts.UserRepository;
 import com.amr.project.model.entity.Role;
 import com.amr.project.model.entity.User;
 import com.amr.project.service.abstracts.UserService;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,14 +19,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@Data
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
 
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+//    @Autowired
+//    public UserServiceImpl(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 

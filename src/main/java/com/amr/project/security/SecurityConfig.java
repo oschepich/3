@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable();
         http.formLogin()
                 // указываем страницу с формой логина
-//                .loginPage("/login")
+                .loginPage("/login")
                 //указываем логику обработки при логине
                 .successHandler(new LoginSuccessHandler())
                 // указываем action с формы логина
@@ -72,7 +72,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // защищенные URL
                 .antMatchers("/**").permitAll()
 //                .antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN')")
-//                .antMatchers("/user").access("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+//                .antMatchers("/**").access("hasAnyRole('ROLE_ADMIN','ROLE_MODERATOR','ROLE_USER')")
+//                .antMatchers("/%/**").access("hasAnyRole('ROLE_ADMIN','ROLE_MODERATOR')")
                 .anyRequest().authenticated();
     }
 
